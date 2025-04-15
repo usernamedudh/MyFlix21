@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ book.title }}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-5 text-white bg-dark">
+  <h1>{{ book.title }}</h1>
+  <img src="{{ book.imageLinks.thumbnail }}" class="img-fluid mb-3" alt="Book Cover">
+  <p><strong>Authors:</strong> {{ book.authors|join(', ') }}</p>
+  <p><strong>Description:</strong> {{ book.description }}</p>
+  <a href="/" class="btn btn-secondary">Back to Home</a>
+</body>
+</html>

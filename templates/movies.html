@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #141414;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+    }
+
+    h1 {
+      color: #e50914;
+      font-weight: 600;
+    }
+
+    .card {
+      background-color: #1f1f1f;
+      border: none;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card-title, .card-text {
+      color: #fff;
+    }
+
+    .btn-primary {
+      background-color: #e50914;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #b00610;
+    }
+  </style>
+</head>
+<body>
+  {% include 'navbar.html' %}
+
+  <div class="container mt-4">
+    <h1 class="text-center">Movies</h1>
+
+    <!-- Search Form for Movies -->
+    <form method="POST" class="mb-4">
+      <input type="text" name="search" class="form-control" placeholder="Search for movies..." required>
+      <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </form>
+
+    <div class="row">
+      {% if movies %}
+        {% for movie in movies %}
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img src="{{ movie.Poster }}" class="card-img-top" alt="Movie Poster">
+              <div class="card-body">
+                <h5 class="card-title">{{ movie.Title }}</h5>
+                <p class="card-text">Year: {{ movie.Year }}</p>
+                <a href="{{ url_for('movie_detail', imdb_id=movie.imdbID) }}" class="btn btn-primary btn-sm">More Info</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No movies found.</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

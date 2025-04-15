@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyFlix - Home</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background-color: #141414;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1, h2 {
+      color: #e50914;
+    }
+
+    .card {
+      background-color: #1f1f1f;
+      border: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .card-title {
+      color: #fff;
+    }
+
+    .card-text {
+      color: #ccc;
+    }
+
+    .btn-primary {
+      background-color: #e50914;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #b00610;
+    }
+
+    .form-control {
+      background-color: #2c2c2c;
+      border: none;
+      color: #fff;
+    }
+
+    .form-control::placeholder {
+      color: #888;
+    }
+
+    .navbar {
+      background-color: #000;
+    }
+
+    .navbar a {
+      color: #fff !important;
+    }
+
+    .navbar-brand {
+      color: #e50914 !important;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  {% include 'navbar.html' %}
+
+  <div class="container mt-4">
+    <h1 class="text-center">Welcome to MyFlix</h1>
+
+    <!-- Search Form -->
+    <form method="POST" class="mb-5">
+      <input type="text" name="search" class="form-control" placeholder="Search for books or movies..." required>
+      <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </form>
+
+    <!-- Books Section -->
+    <h2>Books</h2>
+    <div class="row">
+      {% if books %}
+        {% for book in books %}
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card h-100">
+              <img src="{{ book.image }}" class="card-img-top" alt="Book Image">
+              <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-text">{{ book.description[:100] }}...</p>
+                <a href="{{ url_for('book_detail', book_id=book.id) }}" class="btn btn-primary">More Info</a>
+                <a href="{{ url_for('add_book', book_id=book.id) }}" class="btn btn-primary mt-2">Add to Profile</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-muted ml-3">No books found.</p>
+      {% endif %}
+    </div>
+
+    <!-- Movies Section -->
+    <h2 class="mt-5">Movies</h2>
+    <div class="row">
+      {% if movies %}
+        {% for movie in movies %}
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card h-100">
+              <img src="{{ movie.Poster }}" class="card-img-top" alt="Movie Poster">
+              <div class="card-body">
+                <h5 class="card-title">{{ movie.Title }}</h5>
+                <p class="card-text">Year: {{ movie.Year }}</p>
+                <a href="{{ url_for('movie_detail', imdb_id=movie.imdbID) }}" class="btn btn-primary btn-sm">More Info</a>
+                <a href="{{ url_for('add_movie', imdb_id=movie.imdbID) }}" class="btn btn-primary mt-2">Add to Profile</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-muted ml-3">No movies found.</p>
+      {% endif %}
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+/* Основний фон */
+body {
+    background-color: #f4f7f6;
+}
+
+/* Заголовки */
+h1, h3 {
+    color: #343a40;
+}
+
+/* Списки книг та фільмів */
+ul.list-group {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Кнопка назад */
+.btn-secondary {
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Тінь для карток */
+.list-group-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Для полів вводу */
+.form-control {
+    max-width: 600px;
+    margin: 0 auto;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #141414;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+    }
+
+    .register-container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: #1f1f1f;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    .btn-primary {
+      background-color: #e50914;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #b00610;
+    }
+
+    h2 {
+      color: #e50914;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  {% include 'navbar.html' %}
+
+  <div class="register-container">
+    <h2 class="text-center">Register</h2>
+    <form method="POST">
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" name="username" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </form>
+  </div>
+</body>
+</html>

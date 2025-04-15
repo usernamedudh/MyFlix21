@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #141414;
+            color: white;
+        }
+        .profile-card {
+            background: #191818;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .profile-card h3 {
+            font-weight: bold;
+            color: #333333;
+        }
+        .profile-label {
+            font-weight: 500;
+            color: #424141;
+        }
+        .profile-image img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        .profile-image {
+            margin-bottom: 20px;
+        }
+        .btn-outline-primary, .btn-outline-danger {
+            width: 120px;
+            text-align: center;
+        }
+        .btn-outline-primary {
+            margin-right: 10px;
+        }
+        .profile-info {
+            margin-bottom: 20px;
+        }
+        .profile-info span {
+            font-weight: 500;
+            color: #f5f5f5;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            background-color: #343a40;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        ul li img {
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        .no-items-message {
+            color: #bbb;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="profile-card">
+                    <h1 class="text-center mb-4">Your Profile</h1>
+
+                    <!-- User Greeting -->
+                    <h3 class="mb-3">Welcome, {{ current_user.username }}!</h3>
+
+                    <!-- Profile Picture -->
+                    <div class="profile-image mb-4 text-center">
+                        <img src="{{ current_user.profile_picture or url_for('static', filename='images/default_profile.png') }}" alt="Profile Picture" class="rounded-circle">
+                    </div>
+
+                    <!-- User Information -->
+                    <div class="profile-info mb-3">
+                        <span class="profile-label">Email:</span>
+                        <span>{{ current_user.email or "Not specified" }}</span>
+                    </div>
+
+                    <!-- Books Section -->
+                    <div class="mt-4">
+                        <h4>Your Books:</h4>
+                        <ul>
+                            {% if current_user.books %}
+                                {% for book in current_user.books %}
+                                    <li>
+                                        <img src="{{ book.image }}" width="50" height="75" onclick="window.open('{{ book.image }}', '_blank');" />
+                                        {{ book.title }}
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li class="no-items-message">No books added yet.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <!-- Movies Section -->
+                    <div class="mt-4">
+                        <h4>Your Movies:</h4>
+                        <ul>
+                            {% if current_user.movies %}
+                                {% for movie in current_user.movies %}
+                                    <li>
+                                        <img src="{{ movie.poster }}" width="50" height="75" onclick="window.open('{{ movie.poster }}', '_blank');" />
+                                        {{ movie.title }}
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                <li class="no-items-message">No movies added yet.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <!-- Profile Edit and Logout -->
+                    <div class="mt-4 text-center">
+                        <a href="/edit_profile" class="btn btn-outline-primary">Edit Profile</a>
+                        <a href="/logout" class="btn btn-outline-danger ml-2">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.5/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
