@@ -83,14 +83,10 @@
 
                     <!-- Profile Picture -->
                     <div class="profile-image mb-4 text-center">
-                        <img src="{{ current_user.profile_picture or url_for('static', filename='images/default_profile.png') }}" alt="Profile Picture" class="rounded-circle">
+                        <img src="{{ current_user.profile_picture or url_for('static', filename='images/12.jpg') }}" alt="Profile Picture" class="rounded-circle">
                     </div>
 
-                    <!-- User Information -->
-                    <div class="profile-info mb-3">
-                        <span class="profile-label">Email:</span>
-                        <span>{{ current_user.email or "Not specified" }}</span>
-                    </div>
+
 
                     <!-- Books Section -->
                     <div class="mt-4">

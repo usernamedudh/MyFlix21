@@ -40,6 +40,20 @@
     .btn-primary:hover {
       background-color: #b00610;
     }
+
+    .card-body .btn {
+      width: 100%; /* Чтобы кнопки занимали всю ширину */
+    }
+
+    .card-body .btn-primary {
+      margin-bottom: 10px; /* Отступ между кнопками */
+    }
+
+    /* Добавим размер для кнопки "More Info", как для кнопки "Add to Profile" */
+    .btn-sm {
+      width: 100%; /* Устанавливаем ширину для кнопки */
+      padding: 10px; /* Размер текста и высоты кнопки */
+    }
   </style>
 </head>
 <body>
@@ -63,7 +77,11 @@
               <div class="card-body">
                 <h5 class="card-title">{{ movie.Title }}</h5>
                 <p class="card-text">Year: {{ movie.Year }}</p>
+                <!-- Кнопка "More Info" с таким же размером, как кнопка "Add to Profile" -->
                 <a href="{{ url_for('movie_detail', imdb_id=movie.imdbID) }}" class="btn btn-primary btn-sm">More Info</a>
+                <!-- Кнопка "Add to Profile" под кнопкой "More Info" -->
+                <a href="{{ url_for('add_movie', imdb_id=movie.imdbID) }}" class="btn btn-primary mt-2">
+                  Add to Profile</a>
               </div>
             </div>
           </div>

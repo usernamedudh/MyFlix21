@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #141414;
+            color: white;
+        }
+        .profile-card {
+            background: #191818;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .profile-card h3 {
+            font-weight: bold;
+            color: #333333;
+        }
+        .profile-label {
+            font-weight: 500;
+            color: #424141;
+        }
+        .profile-image img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        .profile-image {
+            margin-bottom: 20px;
+        }
+        .btn-outline-primary, .btn-outline-danger {
+            width: 120px;
+            text-align: center;
+        }
+        .btn-outline-primary {
+            margin-right: 10px;
+        }
+        .profile-info {
+            margin-bottom: 20px;
+        }
+        .profile-info span {
+            font-weight: 500;
+            color: #f5f5f5;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            background-color: #343a40;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        ul li img {
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        .no-items-message {
+            color: #bbb;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+  <div class="container">
+    <a class="navbar-brand text-danger font-weight-bold" href="/">MyFlix</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/books">Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/movies">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-danger text-white px-3 ml-2" href="/login">Sign in</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Profile Edit Page -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="profile-card">
+                <h1 class="text-center mb-4">Edit Your Profile</h1>
+
+                <!-- Edit Form -->
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        {{ form.username.label }}<br>
+                        {{ form.username(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label }}<br>
+                        {{ form.email(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.profile_picture.label }}<br>
+                        {{ form.profile_picture(class="form-control-file") }}
+                    </div>
+                    {{ form.submit(class="btn btn-primary") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-5 ">
+    <p>&copy; 2025 MyFlix. All rights reserved.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.5/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
