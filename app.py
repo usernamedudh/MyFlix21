@@ -144,8 +144,86 @@ def get_books(query=None):
     return []
 
 
-random_books_queries = ["Harry Potter", "The Great Gatsby", "1984", "Moby Dick", "The Catcher in the Rye"]
-random_movies_queries = ["Inception", "The Dark Knight", "Titanic", "The Godfather", "Avatar"]
+random_books_queries = [
+    "Harry Potter", "The Great Gatsby", "1984", "Moby Dick", "The Catcher in the Rye",
+    "Pride and Prejudice", "The Hobbit", "To Kill a Mockingbird", "War and Peace",
+    "Crime and Punishment", "The Lord of the Rings", "The Odyssey", "Jane Eyre",
+    "Brave New World", "The Alchemist", "The Chronicles of Narnia", "The Hunger Games",
+    "The Book Thief", "Fahrenheit 451", "Dune", "The Little Prince", "Wuthering Heights",
+    "Frankenstein", "Dracula", "Great Expectations", "The Kite Runner", "The Shining",
+    "Les Misérables", "Anna Karenina", "The Picture of Dorian Gray", "The Outsiders",
+    "The Da Vinci Code", "The Girl with the Dragon Tattoo", "Shogun", "The Road",
+    "The Name of the Wind", "A Game of Thrones", "The Handmaid's Tale", "Slaughterhouse-Five",
+    "The Catcher in the Rye", "The Secret Garden", "The Invisible Man", "The Bell Jar",
+    "The House of the Seven Gables", "The Color Purple", "The Secret History", "The Godfather",
+    "The Wind in the Willows", "Lord of the Flies", "Dr. Jekyll and Mr. Hyde", "Brave New World",
+    "One Hundred Years of Solitude", "A Clockwork Orange", "The Sun Also Rises",
+    "The Outsiders", "The Little House on the Prairie", "Anna Karenina", "A Tale of Two Cities",
+    "Catcher in the Rye", "The Brothers Karamazov", "The Grapes of Wrath", "The Fault in Our Stars",
+    "To Kill a Mockingbird", "The Jungle Book", "Gone with the Wind", "The Girl on the Train",
+    "The Martian", "Pride and Prejudice", "The Hobbit", "The Hunger Games", "The Fault in Our Stars",
+    "The Godfather", "The Road", "The Shining", "The Great Gatsby", "The Kite Runner",
+    "Murder on the Orient Express", "The Girl on the Train", "The Picture of Dorian Gray",
+    "The Princess Bride", "Twilight", "The Old Man and the Sea", "The Handmaid's Tale",
+    "The Night Circus", "The Ocean at the End of the Lane", "The Color Purple",
+    "The Book Thief", "The Lovely Bones", "The Time Traveler's Wife", "Catch-22",
+    "The Art of War", "The 5th Wave", "The Giver", "Harry Potter and the Prisoner of Azkaban",
+    "A Wrinkle in Time", "Never Let Me Go", "The Hitchhiker's Guide to the Galaxy",
+    "The Night Manager", "The Fountainhead", "The Outsiders", "The Devil in the White City",
+    "Dracula", "The Help", "Les Misérables", "The Three Musketeers", "The Maze Runner",
+    "The Hunger Games", "Gone with the Wind", "The Fault in Our Stars", "The Perks of Being a Wallflower",
+    "The Help", "The Girl with the Pearl Earring", "The Secret History", "The Maze Runner",
+    "Life of Pi", "The Time Traveler's Wife", "The Alchemist", "The Great Gatsby",
+    "The Girl on the Train", "Dune", "The 100-Year-Old Man Who Climbed Out the Window and Disappeared",
+    "The Shack", "The Poisonwood Bible", "Big Little Lies", "The Secret Garden",
+    "The Tipping Point", "The Immortalists", "The Nightingale", "The Paris Wife",
+    "The Song of Achilles", "The Outsiders", "The Silent Patient", "The Seven Husbands of Evelyn Hugo",
+    "Where the Crawdads Sing", "Anxious People", "The Tattooist of Auschwitz", "The Goldfinch",
+    "Circe", "The Night Circus", "Educated", "Normal People", "Little Fires Everywhere",
+    "Before We Were Strangers", "The Girl with the Louding Voice", "The Help", "The Handmaid's Tale",
+    "Big Little Lies", "The Light We Lost", "The Book Thief", "Before We Were Strangers",
+    "The Silent Patient", "The Silent Corner", "Circe", "Eleanor Oliphant is Completely Fine",
+    "The Night Swim", "The Four Winds", "The Last Thing He Told Me"
+]
+
+random_movies_queries = [
+    "Inception", "The Dark Knight", "Titanic", "The Godfather", "Avatar",
+    "Pulp Fiction", "The Shawshank Redemption", "Schindler's List", "The Matrix",
+    "Forrest Gump", "The Lion King", "Gladiator", "The Avengers", "Star Wars",
+    "The Lord of the Rings", "The Silence of the Lambs", "The Godfather Part II",
+    "Back to the Future", "The Departed", "Jurassic Park", "Fight Club",
+    "Interstellar", "The Prestige", "The Green Mile", "Terminator 2",
+    "Goodfellas", "The Dark Knight Rises", "Citizen Kane", "The Shining",
+    "The Social Network", "12 Angry Men", "The Matrix Reloaded", "The Matrix Revolutions",
+    "The Revenant", "Gladiator", "Inglourious Basterds", "The Wolf of Wall Street",
+    "The Pursuit of Happyness", "The Big Lebowski", "The Hangover", "Guardians of the Galaxy",
+    "Spider-Man: No Way Home", "La La Land", "Avengers: Endgame", "The Lion King",
+    "The Incredibles", "The Dark Knight Rises", "The Hunger Games", "Frozen", "Avatar: The Way of Water",
+    "The Batman", "Guardians of the Galaxy Vol. 2", "Doctor Strange", "The Matrix",
+    "Star Wars: A New Hope", "Star Wars: The Empire Strikes Back", "Star Wars: Return of the Jedi",
+    "Thor: Ragnarok", "The Godfather Part III", "Jaws", "The Exorcist", "Good Will Hunting",
+    "Deadpool", "Wonder Woman", "Shutter Island", "The Departed", "The Hunger Games: Catching Fire",
+    "The Lion King", "Pirates of the Caribbean: The Curse of the Black Pearl", "Zootopia",
+    "The Incredibles 2", "Avatar", "Forrest Gump", "Interstellar", "Inception",
+    "The Lord of the Rings: The Fellowship of the Ring", "Star Wars: The Force Awakens",
+    "The Silence of the Lambs", "American History X", "A Beautiful Mind", "The Godfather Part II",
+    "The Matrix", "The Truman Show", "Django Unchained", "The Avengers", "The Revenant",
+    "Guardians of the Galaxy", "Whiplash", "The Dark Knight", "The Lord of the Rings: The Return of the King",
+    "Harry Potter and the Sorcerer's Stone", "The Prestige", "Gladiator", "Terminator 2: Judgment Day",
+    "The Dark Knight Rises", "Black Panther", "Avengers: Endgame", "Spider-Man: Into the Spider-Verse",
+    "Jurassic Park", "The Wolf of Wall Street", "Joker", "Parasite", "The Big Lebowski",
+    "The Shawshank Redemption", "Frozen II", "Inside Out", "The Incredibles", "Mad Max: Fury Road",
+    "La La Land", "The Godfather", "The Matrix Revolutions", "Pulp Fiction", "Fight Club",
+    "The Lion King", "The Dark Knight", "The Lord of the Rings: The Fellowship of the Ring",
+    "12 Angry Men", "Back to the Future", "The Dark Knight", "Schindler's List", "The Big Lebowski",
+    "A Clockwork Orange", "The Departed", "Jaws", "Forrest Gump", "Goodfellas",
+    "The Prestige", "Blade Runner", "The Hunger Games", "Spirited Away", "Titanic", "Deadpool",
+    "Avengers: Endgame", "Pirates of the Caribbean", "Shutter Island", "The Matrix Reloaded",
+    "Fight Club", "The Lord of the Rings: The Two Towers", "Memento", "A Beautiful Mind",
+    "Spider-Man: Homecoming", "The Dark Knight", "The Shining", "La La Land", "Toy Story",
+    "Back to the Future Part II", "The Godfather", "Avengers: Infinity War", "Citizen Kane",
+    "The Shawshank Redemption", "The Lion King", "The Dark Knight", "Jurassic Park", "Guardians of the Galaxy"
+]
 
 
 # Маршруты
@@ -249,6 +327,22 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+def get_similar_books(book_title):
+    url = f"https://www.googleapis.com/books/v1/volumes?q={book_title}"
+    response = requests.get(url)
+    data = response.json()
+    if 'items' in data:
+        books = []
+        for item in data['items']:
+            book_info = item['volumeInfo']
+            books.append({
+                'id': item.get('id'),
+                'title': book_info.get('title', 'Без названия'),
+                'image': book_info.get('imageLinks', {}).get('thumbnail', ''),
+                'description': book_info.get('description', 'Нет описания.')
+            })
+        return books
+    return []
 
 @app.route('/book/<book_id>', methods=['GET', 'POST'])
 def book_detail(book_id):
@@ -261,7 +355,10 @@ def book_detail(book_id):
     author_name = book.get('authors', [None])[0]
     author_image = get_person_image_from_name(author_name) if author_name else None
 
-    return render_template("book_detail.html", book=book, book_id=book_id, reviews=reviews, author_image=author_image)
+    # Получение схожих книг
+    similar_books = get_similar_books(book['title'])
+
+    return render_template("book_detail.html", book=book, book_id=book_id, reviews=reviews, author_image=author_image, similar_books=similar_books)
 
 
 @app.route('/submit_review/<book_id>', methods=['POST'])
